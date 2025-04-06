@@ -1,0 +1,31 @@
+{
+  "menu": [
+    {
+      "url": "/",
+      "name": "Dashboards",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "dashboard-analytics"
+      
+    },
+    {
+      "url": "/register",
+      "name": "User",
+      "icon": "menu-icon tf-icons bx bx-user-plus",
+      "slug": "register",
+      "submenu": [
+        {
+          "url": "/register/add",
+          "name": "Register",
+          "slug": "register-add",
+          "icon": "menu-icon tf-icons bx bx-plus"
+        },
+        {
+          "url": "/register/list",
+          "name": "List Registrations",
+          "slug": "register-list",
+          "icon": "menu-icon tf-icons bx bx-list-ul"
+        }
+      ]
+    }
+  ]
+}
