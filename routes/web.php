@@ -5,8 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\dashboard\Analytics;
 // use App\Http\Controllers\layouts\WithoutMenu;
 // use App\Http\Controllers\layouts\WithoutNavbar;
-// use App\Http\Controllers\layouts\Fluid;
-// use App\Http\Controllers\layouts\Container;
+use App\Http\Controllers\layouts\Fluid;
+use App\Http\Controllers\layouts\Container;
 use App\Http\Controllers\layouts\Blank;
 // use App\Http\Controllers\pages\AccountSettingsAccount;
 // use App\Http\Controllers\pages\AccountSettingsNotifications;
@@ -45,11 +45,12 @@ use App\Http\Controllers\icons\Boxicons;
 // use App\Http\Controllers\form_layouts\HorizontalForm;
 use App\Http\Controllers\tables\Basic as TablesBasic;
 use App\Http\Controllers\GoogleAuth;
+use App\Http\Controllers\StudentController;
 
 // Main Page Route
 Route::get('/', [Analytics::class, 'index'])
-->name('dashboard-analytics')
-->middleware('auth');
+->name('dashboard-analytics');
+// ->middleware('auth');
 
 Route::get('auth/google',[GoogleAuth::class, 'redirectGoogle'])->name('google');
 
@@ -58,7 +59,7 @@ Route::get('auth/google/callback', function (Request $request) {
     dd($user);
 });
  Route::get('auth/google/callback',[GoogleAuth::class,'handlecallback']);
-// layout
+
 Route::get('/layouts/without-menu', [WithoutMenu::class, 'index'])->name('layouts-without-menu');
 Route::get('/layouts/without-navbar', [WithoutNavbar::class, 'index'])->name('layouts-without-navbar');
 Route::get('/layouts/fluid', [Fluid::class, 'index'])->name('layouts-fluid');
@@ -119,3 +120,14 @@ Route::get('/form/layouts-horizontal', [HorizontalForm::class, 'index'])->name('
 
 // tables
 Route::get('/tables/basic', [TablesBasic::class, 'index'])->name('tables-basic');
+
+
+Route::middleware(['auth'])->prefix('students')->name('students.list')->group(function () {
+   
+    Route::get('/', [StudentController::class, 'index'])->name('index');
+    Route::post('/delete', [StudentController::class, 'destroy'])->name('destroy');
+});
+Route::get ('/student', [StudentController::class, 'index'])->name('student.list');
+Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('students.edit');
+Route::get('/student/update/{id}', [StudentController::class, 'update'])->name('students.update');
+Route::get('/student/delete',[StudentContorller::class, 'destroy'])->name('students.delete');

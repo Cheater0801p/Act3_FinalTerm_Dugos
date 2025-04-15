@@ -2,26 +2,39 @@
   "menu": [
     {
       "url": "/",
-      "name": "Dashboards",
+      "name": "Dashboard",
       "icon": "menu-icon tf-icons bx bx-home-circle",
       "slug": "dashboard-analytics"
-      
+    },
+    {
+      "url": "student",
+      "name": "Student",
+      "icon": "menu-icon tf-icons bx bx-home-circle",
+      "slug": "Student",
+      "submenu": [
+        {
+          "url": "/student",
+          "name": "Student List",
+          "slug": "student",
+          "icon": "menu-icon tf-icons bx bx-plus"
+        }
+      ]
     },
     {
       "url": "/register",
-      "name": "User",
+      "name": "User Registration",
       "icon": "menu-icon tf-icons bx bx-user-plus",
       "slug": "register",
       "submenu": [
         {
           "url": "/register/add",
-          "name": "Register",
+          "name": "Add User",
           "slug": "register-add",
           "icon": "menu-icon tf-icons bx bx-plus"
         },
         {
           "url": "/register/list",
-          "name": "List Registrations",
+          "name": "Registered Users",
           "slug": "register-list",
           "icon": "menu-icon tf-icons bx bx-list-ul"
         }
